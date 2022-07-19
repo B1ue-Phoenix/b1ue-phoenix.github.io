@@ -7,10 +7,10 @@
 		"check": "svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
 		"dev": "vite dev",
+		"format": "format-package -w && prettier --ignore-path .gitignore --write --plugin-search-dir=. .",
 		"package": "svelte-kit package",
 		"prepare": "svelte-kit sync && husky install",
 		"preview": "vite preview",
-		"format": "format-package -w && prettier --ignore-path .gitignore --write --plugin-search-dir=. .",
 		"spell": "cspell \"src/**/*\" \"./*\" --fail-fast true"
 	},
 	"dependencies": {
