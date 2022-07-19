@@ -14,12 +14,14 @@
 		"spell": "cspell \"src/**/*\" \"./*\" --fail-fast true"
 	},
 	"dependencies": {
-		"@fontsource/nanum-myeongjo": "^4.5.7"
+		"@fontsource/nanum-myeongjo": "^4.5.7",
+		"three": "^0.142.0"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "next",
 		"@sveltejs/adapter-static": "^1.0.0-next.38",
 		"@sveltejs/kit": "next",
+		"@types/three": "^0.142.0",
 		"cspell": "^6.2.3",
 		"format-package": "^7.0.0",
 		"husky": "^8.0.1",

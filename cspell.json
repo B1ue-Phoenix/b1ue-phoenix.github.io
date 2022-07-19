@@ -2,5 +2,12 @@
 	"version": "0.2",
 	"language": "en",
 	"enableFiletypes": ["svelte"],
-	"words": ["nanum", "myeongjo", "sveltekit", "sveltejs", "fontsource"]
+	"words": [
+		"nanum",
+		"myeongjo",
+		"sveltekit",
+		"sveltejs",
+		"fontsource",
+		"GLTF"
+	]
 }
