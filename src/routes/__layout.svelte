@@ -1,5 +1,5 @@
 <script>
-    import "@fontsource/nanum-myeongjo"
+	import "$lib/styles/app.scss";
 </script>
 
-<slot></slot>
+<slot />
