@@ -1,23 +1,27 @@
 <script lang="ts">
+	import { onMount } from "svelte";
+
 	import * as SC from "svelte-cubed";
 	import * as THREE from "three";
 	import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
 	let loaded = false;
 	let data: any;
-	const loader = new GLTFLoader();
-	loader.load(
-		"/3d/ramen_cart.gltf",
-		(gltf) => {
-			data = gltf.scene;
-			console.log("loaded");
-			loaded = true;
-			console.dir(data);
-		},
-		(xhr) => {
-			console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
-		}
-	);
+	onMount(() => {
+		const loader = new GLTFLoader();
+		loader.load(
+			"/3d/ramen_cart.gltf",
+			(gltf) => {
+				data = gltf.scene;
+				console.log("loaded");
+				loaded = true;
+				console.dir(data);
+			},
+			(xhr) => {
+				console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
+			}
+		);
+	});
 </script>
 
 {#if loaded}
