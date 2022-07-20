@@ -1,4 +1,5 @@
 <script>
+	import { t } from "$lib/i18n";
 	import { cameraPosition } from "$lib/stores";
 	import * as SC from "svelte-cubed";
 	import * as THREE from "three";
@@ -14,8 +15,12 @@
 	</div>
 	<nav>
 		<ol>
-			<li><a href="/3d/box"> box</a></li>
-			<li><a href="/3d/cart">cart</a></li>
+			<li>
+				<a href="/3d/box"> {$t("l.3d.box", { default: "Epic" })}</a>
+			</li>
+			<li>
+				<a href="/3d/cart">{$t("l.3d.cart", { default: "Epic" })}</a>
+			</li>
 		</ol>
 	</nav>
 </main>
