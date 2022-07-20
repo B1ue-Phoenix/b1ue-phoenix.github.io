@@ -1,11 +1,12 @@
 <script>
+	import { cameraPosition } from "$lib/stores";
+	import { onMount } from "svelte";
 	import * as SC from "svelte-cubed";
 	import * as THREE from "three";
+
+	onMount(() => {
+		cameraPosition.set([1, 1, 2]);
+	});
 </script>
 
-<SC.Canvas>
-	<SC.PerspectiveCamera position={[1, 1, 3]} />
-	<SC.Mesh geometry={new THREE.BoxGeometry()} />
-
-	<SC.OrbitControls enableZoom={false} />
-</SC.Canvas>
+<SC.Mesh geometry={new THREE.BoxGeometry()} />

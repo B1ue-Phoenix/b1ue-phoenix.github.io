@@ -8,6 +8,7 @@
 		"sveltekit",
 		"sveltejs",
 		"fontsource",
-		"GLTF"
+		"GLTF",
+		"tweened"
 	]
 }

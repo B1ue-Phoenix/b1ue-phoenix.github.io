@@ -1,13 +1,16 @@
 <script lang="ts">
+	import { cameraPosition } from "$lib/stores";
 	import { onMount } from "svelte";
-
 	import * as SC from "svelte-cubed";
+	import { tweened } from "svelte/motion";
 	import * as THREE from "three";
 	import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
 	let loaded = false;
+	let loadingVal: number;
 	let data: any;
 	onMount(() => {
+		cameraPosition.set([12, 6, 2]);
 		const loader = new GLTFLoader();
 		loader.load(
 			"/3d/ramen_cart.gltf",
@@ -18,32 +21,31 @@
 				console.dir(data);
 			},
 			(xhr) => {
-				console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
+				loadingVal = (xhr.loaded / xhr.total) * 100;
+				console.log(loadingVal + "% loaded");
 			}
 		);
 	});
 </script>
 
 {#if loaded}
-	<SC.Canvas background={new THREE.Color(0x36363f)}>
-		<SC.Primitive
-			object={data}
-			position={[0, 0, 0]}
-			rotation={[0, 0, 0]}
-			scale={[1, 1, 1]}
-		/>
-		<SC.PerspectiveCamera position={[2, 20, 2]} />
+	<SC.Primitive
+		object={data}
+		position={[0, 0, 0]}
+		rotation={[0, 0, 0]}
+		scale={[1, 1, 1]}
+	/>
 
-		<SC.DirectionalLight
-			color={new THREE.Color(0xffffff)}
-			position={[0, 10, 10]}
-			intensity={0.75}
-			shadow={false}
-		/>
-		<SC.AmbientLight color={new THREE.Color(0xffffff)} intensity={0.75} />
-
-		<SC.OrbitControls enableZoom={false} />
-	</SC.Canvas>
+	<SC.DirectionalLight
+		color={new THREE.Color(0xffffff)}
+		position={[0, 10, 10]}
+		intensity={0.75}
+		shadow={false}
+	/>
+	<SC.AmbientLight color={new THREE.Color(0xffffff)} intensity={0.75} />
 {:else}
-	<h1>Loading ...</h1>
+	{#if loadingVal}
+		<h1>{tweened(loadingVal, {})}%</h1>
+	{/if}
+	<h2>Loading ...</h2>
 {/if}
